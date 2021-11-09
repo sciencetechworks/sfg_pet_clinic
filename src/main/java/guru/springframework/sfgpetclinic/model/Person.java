@@ -8,7 +8,7 @@ package guru.springframework.sfgpetclinic.model;
  *
  * @author Usuario
  */
-public class Person {
+public class Person extends BaseEntity {
     private String firstName;
     private String lastName;
 
