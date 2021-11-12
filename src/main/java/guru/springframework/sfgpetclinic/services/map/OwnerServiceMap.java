@@ -5,7 +5,7 @@
 package guru.springframework.sfgpetclinic.services.map;
 
 import guru.springframework.sfgpetclinic.model.Owner;
-import guru.springframework.sfgpetclinic.services.CrudService;
+import guru.springframework.sfgpetclinic.services.OwnerService;
 import java.util.Set;
 
 /**
@@ -13,7 +13,7 @@ import java.util.Set;
  * @author Usuario
  */
 public class OwnerServiceMap extends AbstractMapService<Owner,Long> 
-        implements CrudService<Owner,Long>{
+        implements OwnerService{
 
     @Override
     public Set<Owner> findAll() {
@@ -40,6 +40,11 @@ public class OwnerServiceMap extends AbstractMapService<Owner,Long>
     public void deleteById(Long id)
     {
         super.deleteById(id);
+    }
+
+    @Override
+    public Owner findByLastName(String lastName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
   
     
