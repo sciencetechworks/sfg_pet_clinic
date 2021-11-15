@@ -11,15 +11,17 @@ import java.time.LocalDate;
  * @author Usuario
  */
 public class Pet extends BaseEntity {
+    
+    private String name;
     private PetType petType;
     private Owner owner;
     private LocalDate birthDate;
 
     /**
-     * @return the petType
+     * @param name the name to set
      */
-    public PetType getPetType() {
-        return petType;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -30,17 +32,38 @@ public class Pet extends BaseEntity {
     }
 
     /**
-     * @return the owner
-     */
-    public Owner getOwner() {
-        return owner;
-    }
-
-    /**
      * @param owner the owner to set
      */
     public void setOwner(Owner owner) {
         this.owner = owner;
+    }
+
+    /**
+     * @param birthDate the birthDate to set
+     */
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @return the petType
+     */
+    public PetType getPetType() {
+        return petType;
+    }
+
+    /**
+     * @return the owner
+     */
+    public Owner getOwner() {
+        return owner;
     }
 
     /**
@@ -50,10 +73,5 @@ public class Pet extends BaseEntity {
         return birthDate;
     }
 
-    /**
-     * @param birthDate the birthDate to set
-     */
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
+   
 }
