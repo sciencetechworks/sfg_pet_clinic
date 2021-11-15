@@ -11,6 +11,10 @@ import java.util.Set;
  * @author Usuario
  */
 public class Owner extends Person {
+    
+    private String address;
+    private String city;
+    private String telephone;
     private Set<Pet> pets;
 
      /**
@@ -25,6 +29,48 @@ public class Owner extends Person {
      */
     public void setPets(Set<Pet> pets) {
         this.pets = pets;
+    }
+
+    /**
+     * @return the address
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * @param address the address to set
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    /**
+     * @return the city
+     */
+    public String getCity() {
+        return city;
+    }
+
+    /**
+     * @param city the city to set
+     */
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    /**
+     * @return the telephone
+     */
+    public String getTelephone() {
+        return telephone;
+    }
+
+    /**
+     * @param telephone the telephone to set
+     */
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
    
     
