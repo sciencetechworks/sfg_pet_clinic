@@ -5,10 +5,14 @@
 package guru.springframework.sfgpetclinic.model;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -33,6 +37,9 @@ public class Pet extends BaseEntity {
     @Column(name="birth_date")
     private LocalDate birthDate;
 
+    @OneToMany(cascade= CascadeType.ALL, mappedBy="pet")
+    private Set<Visit> visits = new HashSet<>();
+    
     /**
      * @param name the name to set
      */
@@ -87,6 +94,20 @@ public class Pet extends BaseEntity {
      */
     public LocalDate getBirthDate() {
         return birthDate;
+    }
+
+    /**
+     * @return the visits
+     */
+    public Set<Visit> getVisits() {
+        return visits;
+    }
+
+    /**
+     * @param visits the visits to set
+     */
+    public void setVisits(Set<Visit> visits) {
+        this.visits = visits;
     }
 
    
