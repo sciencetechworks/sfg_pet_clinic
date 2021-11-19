@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package guru.springframework.sfgpetclinic.services.map;
 
 import guru.springframework.sfgpetclinic.model.PetType;
 import guru.springframework.sfgpetclinic.services.PetTypeService;
 import java.util.Set;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,6 +11,7 @@ import org.springframework.stereotype.Service;
  * @author Usuario
  */
 @Service
+@Profile({"default","map"})
 public class PetTypeMapService extends AbstractMapService<PetType,Long> 
         implements PetTypeService {
     @Override
