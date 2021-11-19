@@ -15,11 +15,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Profile("springdatajpa")
-public class VetSDJpaVetService implements VetService {
+public class VetSDJpaService implements VetService {
 
     private final VetRepository vetRepository;
 
-    public VetSDJpaVetService(VetRepository vetRepository) {
+    public VetSDJpaService(VetRepository vetRepository) {
         this.vetRepository = vetRepository;
     }
     
