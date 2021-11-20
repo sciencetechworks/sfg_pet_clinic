@@ -11,11 +11,18 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
  * @author Usuario
  */
+@Setter
+@Getter
+@NoArgsConstructor
 @Entity
 @Table(name="owners")
 public class Owner extends Person {
@@ -28,63 +35,15 @@ public class Owner extends Person {
     private String telephone;
     
     @OneToMany(cascade= CascadeType.ALL,mappedBy = "owner")
-    private Set<Pet> pets = new HashSet<>();
+    private final Set<Pet> pets = new HashSet<>();
 
-     /**
-     * @return the pets
-     */
-    public Set<Pet> getPets() {
-        return pets;
-    }
-
-    /**
-     * @param pets the pets to set
-     */
-    public void setPets(Set<Pet> pets) {
-        this.pets = pets;
-    }
-
-    /**
-     * @return the address
-     */
-    public String getAddress() {
-        return address;
-    }
-
-    /**
-     * @param address the address to set
-     */
-    public void setAddress(String address) {
+    @Builder
+    public Owner(Long id, String firstName, String lastName,String address, String city, String telephone) {
+        super(id, firstName, lastName);
         this.address = address;
-    }
-
-    /**
-     * @return the city
-     */
-    public String getCity() {
-        return city;
-    }
-
-    /**
-     * @param city the city to set
-     */
-    public void setCity(String city) {
         this.city = city;
-    }
-
-    /**
-     * @return the telephone
-     */
-    public String getTelephone() {
-        return telephone;
-    }
-
-    /**
-     * @param telephone the telephone to set
-     */
-    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
-   
+    
     
 }
