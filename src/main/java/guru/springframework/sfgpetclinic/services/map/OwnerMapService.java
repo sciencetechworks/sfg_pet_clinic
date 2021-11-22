@@ -79,7 +79,11 @@ public class OwnerMapService extends AbstractMapService<Owner,Long>
 
     @Override
     public Owner findByLastName(String lastName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.findAll().
+                stream().
+                filter(owner -> owner.getLastName().equalsIgnoreCase(lastName)).
+                findFirst().
+                orElse(null);
     }
   
     
