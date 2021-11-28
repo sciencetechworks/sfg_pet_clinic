@@ -4,6 +4,8 @@ import guru.springframework.sfgpetclinic.model.Owner;
 import guru.springframework.sfgpetclinic.services.OwnerService;
 import java.util.HashSet;
 import java.util.Set;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -11,6 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import static org.mockito.ArgumentMatchers.anyLong;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import static org.mockito.Mockito.verifyZeroInteractions;
@@ -82,6 +85,7 @@ public class OwnerControllerTest {
                 andExpect(model().attribute("owners", hasSize(2)));
     }
 
+    
      @Test
     public void testListOwnersByIndex() throws Exception {
         System.out.println("listOwnersByIndex");
@@ -93,6 +97,7 @@ public class OwnerControllerTest {
                 andExpect(view().name("owners/index")).
                 andExpect(model().attribute("owners", hasSize(2)));
     }
+    
     /**
      * Test of findOwners method, of class OwnerController.
      */
@@ -107,4 +112,14 @@ public class OwnerControllerTest {
         verifyZeroInteractions(ownerService);
     }
     
+    @Test
+    void displayOwner() throws Exception {
+        when(ownerService.findById(anyLong())).thenReturn(Owner.builder().id(1L).build());
+        
+        mockMvc.perform(get("/owners/123")).
+                andExpect(status().isOk()).
+                andExpect(view().name("owners/ownerDetails")).
+                andExpect(model().attribute("owner", hasProperty("id",is(1L))));
+        
+    }
 }
